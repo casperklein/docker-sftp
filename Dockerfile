@@ -1,6 +1,6 @@
 FROM	debian:10-slim
 
-RUN	apt update && apt -y install ssh
+RUN	apt update && apt -y install openssh-server
 
 RUN	mkdir /run/sshd
 
