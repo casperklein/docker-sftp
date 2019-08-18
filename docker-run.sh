@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "sftp:$password" | chpasswd
+echo "root:$password" | chpasswd
 
 cd /etc/ssh || exit
 

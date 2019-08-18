@@ -16,4 +16,4 @@
     HOST=localhost
     PORT=222
 
-    sftp -P $PORT sftp@"$HOST"
+    sftp -P $PORT root@"$HOST"
