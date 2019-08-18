@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Password: $password"
-
 echo "root:$password" | chpasswd
 
 while :; do
