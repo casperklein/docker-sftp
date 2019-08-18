@@ -4,7 +4,7 @@ UsePAM no
 DisableForwarding yes
 PrintMotd no
 AcceptEnv LANG LC_*
-Subsystem       sftp    /usr/lib/openssh/sftp-server
+Subsystem sftp internal-sftp
 DebianBanner no
 PermitRootLogin yes
 ForceCommand internal-sftp
