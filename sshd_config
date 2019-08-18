@@ -7,5 +7,6 @@ AcceptEnv LANG LC_*
 Subsystem sftp internal-sftp
 DebianBanner no
 PermitRootLogin yes
+AllowUsers root
 ForceCommand internal-sftp
 ChrootDirectory /mnt/
