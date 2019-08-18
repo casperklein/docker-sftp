@@ -7,6 +7,10 @@
 
     docker run --rm -it -v $(pwd):/mnt -p $PORT:22 --env password="$PASSWORD" casperklein/sftp
 
+### Alias
+
+    alias sftphere='docker run --rm -it -v $(pwd):/mnt -p 222:22 --env password="!insecure!" casperklein/sftp'
+
 ## Connect to SFTP
 
     HOST=localhost
