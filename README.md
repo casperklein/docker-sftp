@@ -1,6 +1,6 @@
 # docker-sftp
 
-## Serve files in current directory via SFTP
+## Share files in current directory via SFTP
 
     PASSWORD='!insecure!'
     PORT=222
