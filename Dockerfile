@@ -2,7 +2,8 @@ FROM	debian:10-slim
 
 RUN	apt update			&& \
 	apt -y install openssh-server	&& \
-	mkdir /run/sshd
+	mkdir /run/sshd			&& \
+	useradd sftp
 
 ADD	sshd_config /etc/ssh/sshd_config
 ADD	docker-run.sh /
