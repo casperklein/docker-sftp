@@ -3,5 +3,5 @@
 echo "root:$password" | chpasswd
 
 while :; do
-	/usr/sbin/sshd -d
+	/usr/sbin/sshd -D -e
 done
