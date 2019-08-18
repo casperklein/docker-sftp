@@ -1,5 +1,4 @@
 .git
 .dockerignore
 Dockerfile
-docker-sftp.sh
 README.md
