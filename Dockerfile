@@ -4,8 +4,8 @@ RUN	apt-get update				&& \
 	apt-get -y install openssh-server	&& \
 	mkdir /run/sshd
 
-ADD	sshd_config /etc/ssh/sshd_config
-ADD	docker-run.sh /
+COPY	sshd_config /etc/ssh/sshd_config
+COPY	docker-run.sh /
 
 EXPOSE	22
 
