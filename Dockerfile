@@ -1,4 +1,4 @@
-FROM	debian:10-slim
+FROM	debian:10-slim as build
 
 RUN	apt-get update				&& \
 	apt-get -y install openssh-server	&& \
@@ -6,6 +6,9 @@ RUN	apt-get update				&& \
 
 COPY	sshd_config /etc/ssh/sshd_config
 COPY	docker-run.sh /
+
+FROM    scratch
+COPY    --from=build / /
 
 EXPOSE	22
 
