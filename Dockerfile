@@ -1,15 +1,25 @@
-FROM	debian:10-slim as build
+ARG	FROM=debian:10-slim
 
-RUN	apt-get update \
-&&	apt-get -y install openssh-server \
-&&	mkdir /run/sshd
+FROM    $FROM as build
 
-COPY	sshd_config /etc/ssh/sshd_config
-COPY	docker-run.sh /
+ENV	PACKAGES="openssh-server"
 
-FROM    scratch
-COPY    --from=build / /
+# Install openssh-server
+RUN     apt-get update \
+&&	apt-get -y install $PACKAGES
 
-EXPOSE	22
+# Copy root filesystem
+COPY	rootfs /
 
-CMD	/docker-run.sh
+RUN	mkdir /run/sshd
+
+# Build final image
+RUN	apt-get -y install dumb-init \
+&&	rm -rf /var/lib/apt/lists/*
+FROM	scratch
+COPY	--from=build / /
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+EXPOSE  22
+
+CMD	["/run.sh"]
