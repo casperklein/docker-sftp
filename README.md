@@ -5,11 +5,11 @@
     PASSWORD='!insecure!'
     PORT=222
 
-    docker run --rm -it -v $(pwd):/mnt -p $PORT:22 -e password="$PASSWORD" casperklein/sftp
+    docker run --rm -it -v $PWD:/mnt -p $PORT:22 -e password="$PASSWORD" casperklein/sftp
 
 ### Alias
 
-    alias sftphere='docker run --rm -it -v $(pwd):/mnt -p 222:22 -e password="!insecure!" casperklein/sftp'
+    alias sftphere='docker run --rm -it -v $PWD:/mnt -p 222:22 -e password="!insecure!" casperklein/sftp'
 
 ## Connect to SFTP service
 
