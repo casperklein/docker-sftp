@@ -3,7 +3,7 @@ FROM	debian:10-slim as build
 ENV	PACKAGES="openssh-server"
 
 # Install openssh-server
-RUN     apt-get update \
+RUN	apt-get update \
 &&	apt-get -y install $PACKAGES
 
 # Copy root filesystem
@@ -18,6 +18,6 @@ FROM	scratch
 COPY	--from=build / /
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-EXPOSE  22
+EXPOSE	22
 
 CMD	["/run.sh"]
