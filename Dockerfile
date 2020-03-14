@@ -1,5 +1,9 @@
 FROM	debian:10-slim as build
 
+ENV	USER="casperklein"
+ENV	NAME="sftp"
+ENV	VERSION="0.1"
+
 ENV	PACKAGES="openssh-server"
 
 # Install openssh-server
