@@ -1,14 +1,12 @@
 FROM	debian:10-slim as build
 
-ENV	USER="casperklein"
-ENV	NAME="sftp"
-ENV	VERSION="0.1.1"
-
-ENV	PACKAGES="openssh-server"
+ENV	PACKAGES="openssh-server dumb-init"
 
 # Install openssh-server
 RUN	apt-get update \
-&&	apt-get -y install $PACKAGES
+&&	apt-get -y upgrade \
+&&	apt-get -y --no-install-recommends install $PACKAGES \
+&&	rm -rf /var/lib/apt/lists/*
 
 # Copy root filesystem
 COPY	rootfs /
@@ -16,12 +14,11 @@ COPY	rootfs /
 RUN	mkdir /run/sshd
 
 # Build final image
-RUN	apt-get -y install dumb-init \
-&&	rm -rf /var/lib/apt/lists/*
 FROM	scratch
-COPY	--from=build / /
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 EXPOSE	22
 
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD	["/run.sh"]
+
+COPY	--from=build / /

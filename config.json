@@ -1,0 +1,6 @@
+{
+  "user": "casperklein",
+  "name": "sftp",
+  "image": "casperklein/sftp",
+  "version": "0.1.1"
+}
