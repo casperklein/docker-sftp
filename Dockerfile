@@ -16,9 +16,12 @@ RUN	mkdir /run/sshd
 # Build final image
 FROM	scratch
 
-EXPOSE	22
+ARG	VERSION
+ENV	Version=$VERSION
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD	["/run.sh"]
+
+EXPOSE	22
 
 COPY	--from=build / /
