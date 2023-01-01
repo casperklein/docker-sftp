@@ -1,6 +1,6 @@
 FROM	debian:10-slim as build
 
-ENV	PACKAGES="openssh-server dumb-init"
+ARG	PACKAGES="openssh-server dumb-init"
 
 # Install openssh-server
 RUN	apt-get update \
@@ -16,8 +16,12 @@ RUN	mkdir /run/sshd
 # Build final image
 FROM	scratch
 
-ARG	VERSION
-ENV	Version=$VERSION
+ARG	VERSION="unknown"
+
+LABEL	org.opencontainers.image.description="Share files via SFTP"
+LABEL	org.opencontainers.image.source="https://github.com/casperklein/docker-sftp/"
+LABEL	org.opencontainers.image.title="docker-sftp"
+LABEL	org.opencontainers.image.version="$VERSION"
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD	["/run.sh"]
