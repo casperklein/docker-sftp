@@ -1,4 +1,4 @@
-FROM	debian:10-slim as build
+FROM	debian:12-slim as build
 
 ARG	PACKAGES="openssh-server dumb-init"
 
